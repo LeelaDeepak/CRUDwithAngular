@@ -1,0 +1,83 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <div class="card shadow border-0 p-3">
+                <div class="form-floating mb-3">
+                    <h5 class="text-center text-primary">Add Student</h5>
+                  </div>
+                  <div *ngIf="editMode else normalView">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="firstname" ngModel="{{studentObj.first_name}}" (keyup)="onfirstNameKey($event)">
+                        <label for="firstname">First Name</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="lastname" ngModel="{{studentObj.last_name}}" (keyup)="onlastNameKey($event)">
+                        <label for="lastname">Last Name</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="email" class="form-control" name="email" ngModel="{{studentObj.email}}" (keyup)="onemailKey($event)">
+                        <label for="email">Email</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="number" class="form-control"  name="mobile" ngModel="{{studentObj.mobile}}" (keyup)="onMobileKey($event)">
+                        <label for="mobile">Mobile Number</label>
+                      </div>
+                    <button type="button" class="btn btn-outline-primary" (click)="saveStudent(studentObj)">Save Student</button>
+                  </div>
+                  <ng-template #normalView>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="firstName" name="firstname" [(ngModel)]="first_name">
+                        <label for="firstname">First Name</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="lastName" name="lastname" [(ngModel)]="last_name">
+                        <label for="lastname">Last Name</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email">
+                        <label for="email">Email</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="mobile" placeholder="mobile Number" name="mobile" [(ngModel)]="mobile">
+                        <label for="mobile">Mobile Number</label>
+                      </div>
+                      <button type="button" class="btn btn-outline-success" (click)="addStudent()">Add Student</button>
+                    
+                  </ng-template>
+                    
+                      
+                
+            </div>
+        </div>
+        <div class="col-md-8 mt-5">
+            <h5 class="text-danger text-center">Student List</h5>
+            <div class="card shadow">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Mobile</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let student of studentsList">
+                            <td>{{student.first_name}}</td>
+                            <td>{{student.last_name}}</td>
+                            <td>{{student.mobile}}</td>
+                            <td>{{student.email}}</td>
+                            <td><button class="btn btn-outline-primary" (click)="updateStudent(student)">Edit</button></td>
+                            <td><button class="btn btn-outline-danger" (click)="deleteStudent(student)">Delete</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

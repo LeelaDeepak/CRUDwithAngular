@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "student-management-syste-57980": {
+      "hosting": {
+        "FirebaseCRUDApp": [
+          "student-management-syste-57980"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "student-management-syste-57980"
+  }
+}
